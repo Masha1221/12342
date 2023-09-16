@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Component
@@ -34,14 +35,11 @@ public class TelegramBotService extends TelegramLongPollingBot {
     private final Map<Long, PostEntity> postText = new HashMap<>();
     private final Map<Long, PostEntity> postTextImageMap = new HashMap<>();
 
-    private final PostEntity post = new PostEntity();
     private boolean isTextReceived = false;
     private PostEntity postTextImage;
     private final ImageService imageService;
     private final UserService userService;
     private final PostService postService;
-
-    private final InstagramService instagramService;
 
     @Override
     public String getBotUsername() {
@@ -57,7 +55,6 @@ public class TelegramBotService extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
 
         Message message = update.getMessage();
-        userService.saveNotExistingUser(message.getChatId(), message);
 
         if (update.hasMessage() && update.getMessage().hasText()) {
             boolean isMemberTelegram = isTelegramSubscriber(update);
@@ -65,11 +62,11 @@ public class TelegramBotService extends TelegramLongPollingBot {
             PostEntity postText = this.postText.get(chatId);
             String messageText = update.getMessage().getText();
 
+            userService.saveNotExistingUser(message.getChatId(), message);
             switch (messageText) {
                 case "/start":
                     sendMessage(chatId, Value.COMMAND_START);
-                    createTwoBoard(chatId, Value.COMMAND_GET_SUPPORT,
-                            Value.COMMAND_GET_BONUS_CODE);
+                    createTwoBoard(chatId, Value.COMMAND_GET_SUPPORT, Value.COMMAND_GET_BONUS_CODE);
                     break;
                 case Value.COMMAND_MENU:
                     createTwoBoard(chatId, Value.COMMAND_GET_SUPPORT,
@@ -77,19 +74,30 @@ public class TelegramBotService extends TelegramLongPollingBot {
                     break;
 
                 case Value.COMMAND_GET_SUPPORT:
-                    sendMessage(chatId, "Подключаем чат оператора.. Опишите пожалуйста ваш" +
-                            " вопрос, мы обязательно вам поможем!");
+                    sendMessage(chatId, "Дорогой игрок,\n\n" +
+                            "Мы готовы тебе помочь! Пожалуйста, перейди по ссылке ниже," +
+                            " чтобы поделиться своей проблемой с нами. " +
+                            "Мы всегда готовы выслушать тебя и предложить наилучшее решение.\n" +
+                            "\n\uD83D\uDC49  @TheBattleClubBot");
+                    createOneBoard(chatId, Value.COMMAND_MENU, "Выберите действие");
                     break;
 
                 case Value.COMMAND_GET_BONUS_CODE:
                     sendMessage(chatId, Value.COMMAND_CONDITIONS_BONUS_CODE);
-                    createTwoBoard(chatId, Value.COMMAND_I_DID_CONDITIONS_TELEGRAM,
-                            Value.COMMAND_I_DID_CONDITIONS_INSTAGRAM);
+                    createOneBoard(chatId, Value.COMMAND_I_DID_CONDITIONS_TELEGRAM, "Выберите пункт меню\uD83D\uDC47");
                     break;
 
                 case Value.COMMAND_GET_COUNT_USERS:
                     sendMessage(chatId, "В текущий момент количество пользователей: "
                             + userService.getAllUsers().size());
+                    break;
+
+                case Value.COMMAND_GET_NAMES_USERS:
+                    List<UserEntity> users = userService.getAllUsers();
+                    String userNamesMessage = users.stream()
+                            .map(UserEntity::getName)
+                            .collect(Collectors.joining("\n"));
+                    sendMessage(chatId, "Список имен пользователей:\n" + userNamesMessage);
                     break;
 
                 case Value.COMMAND_CREATE_NEWSLETTER:
@@ -98,18 +106,21 @@ public class TelegramBotService extends TelegramLongPollingBot {
                     break;
 
                 case "Меню":
-                    createTwoBoard(chatId
-                            , Value.COMMAND_GET_COUNT_USERS, Value.COMMAND_CREATE_NEWSLETTER);
+                    createThreeBoard(chatId, Value.COMMAND_GET_COUNT_USERS, Value.COMMAND_CREATE_NEWSLETTER
+                            , Value.COMMAND_GET_NAMES_USERS);
                     break;
 
                 case "Отправить рассылку":
                     PostEntity postEntity = postService.getTheLastPost();
                     sendMessageToAllUsers(postEntity.getDescription());
+                    sendMessage(chatId, "Ваша рассылка была успешно отправлена!");
                     break;
 
                 case "Отправить рассылку Текст\u27A1Изображение":
                     sendMessageWithImageToAllUsers();
+                    sendMessage(chatId, "Ваша рассылка была успешно отправлена!");
                     break;
+                //доработать
             }
 
             //проверка условий и выдача бонус кода
@@ -123,6 +134,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
                     user.setDateOfGivenBonusCodeTelegram(date);
                     userService.save(user);
                     createOneBoard(chatId, Value.COMMAND_MENU, Value.CHOOSE_COMMAND);
+                    return;
                 } else {
                     UserEntity userEntity = userService.findByChatId(chatId);
                     Date dateBonusCodeOfTelegram = userEntity.getDateOfGivenBonusCodeTelegram();
@@ -133,18 +145,18 @@ public class TelegramBotService extends TelegramLongPollingBot {
                     conditionsDate(chatId, dateBonusCodeOfTelegram, currentDate);
                 }
             } else if (messageText.equals(Value.COMMAND_I_DID_CONDITIONS_TELEGRAM)) {
-                sendMessage(chatId, "Извините, вы не подписались на Телеграм канал.");
-            }
+                sendMessage(chatId, "Извините, вы не выполнили условие.\n" +
+                        "⚡️Нужно подписатсья на телеграм канал @thebattleclub ");
+                createTwoBoard(chatId,Value.COMMAND_I_DID_CONDITIONS_TELEGRAM,Value.COMMAND_MENU);
 
-            if (messageText.equals(Value.COMMAND_I_DID_CONDITIONS_INSTAGRAM)) {
-                giveBonusCodeInstagram(chatId);
             }
 
             if (messageText.equals("/admin")) {
                 if ((message.getFrom().getId().equals(Value.ID_ADMIN_1)) ||
                         (message.getFrom().getId().equals(Value.ID_ADMIN_2))) {
                     sendMessage(chatId, Value.COMMAND_GREETINGS_FOR_ADMINISTRATOR);
-                    createTwoBoard(chatId, Value.COMMAND_GET_COUNT_USERS, Value.COMMAND_CREATE_NEWSLETTER);
+                    createThreeBoard(chatId, Value.COMMAND_GET_COUNT_USERS, Value.COMMAND_CREATE_NEWSLETTER,
+                            Value.COMMAND_GET_NAMES_USERS);
                 } else {
                     sendMessage(chatId, "Извините, у вас нет прав администратора.");
                 }
@@ -213,38 +225,19 @@ public class TelegramBotService extends TelegramLongPollingBot {
         }
     }
 
+
     private void conditionsDate(long chatId, Date dateBonusCode, Date currentDate) {
         long diffInMillis = currentDate.getTime() - dateBonusCode.getTime();
-        long thirtyDaysInMillis = 30L * 24L * 60L * 60L * 1000L;
-        if (diffInMillis >= thirtyDaysInMillis) {
+        long sevenDaysInMillis = 7L * 24L * 60L * 60L * 1000L;
+        if (diffInMillis >= sevenDaysInMillis) {
             sendMessage(chatId, "Отлично , получите ваш новый бонус-код! jwefnjoeifio39");
             createOneBoard(chatId, Value.COMMAND_MENU, Value.CHOOSE_COMMAND);
         } else {
             sendMessage(chatId, "Извините, вы уже получили бонус код ранее.\n" +
                     "Следующий бонус будет доступен уже через " + String.format("%d дней и %d часов",
-                    TimeUnit.MILLISECONDS.toDays(thirtyDaysInMillis - diffInMillis),
-                    TimeUnit.MILLISECONDS.toHours(thirtyDaysInMillis - diffInMillis) % 24L) + ".");
+                    TimeUnit.MILLISECONDS.toDays(sevenDaysInMillis - diffInMillis),
+                    TimeUnit.MILLISECONDS.toHours(sevenDaysInMillis - diffInMillis) % 24L) + ".");
             createOneBoard(chatId, Value.COMMAND_MENU, Value.CHOOSE_COMMAND);
-        }
-    }
-
-    private void giveBonusCodeInstagram(long chatId) {
-        UserEntity user = userService.findByChatId(chatId);
-        if (!user.isBonusCodeGivenInstagram()) {
-            Date date = new Date();
-            sendMessage(chatId, "Супер! Получите ваш бонус код - 2jf383uhff3iknf");
-            user.setBonusCodeGivenInstagram(true);
-            user.setDateOfGivenBonusCodeInstagram(date);
-            userService.save(user);
-            createOneBoard(chatId, Value.COMMAND_MENU, Value.CHOOSE_COMMAND);
-        } else {
-            UserEntity userEntity = userService.findByChatId(chatId);
-            Date dateBonusCodeOfInstagram = userEntity.getDateOfGivenBonusCodeInstagram();
-            Date currentDate = new Date();
-            userEntity.setBonusCodeGivenInstagram(true);
-            userEntity.setDateOfGivenBonusCodeInstagram(currentDate);
-            userService.save(userEntity);
-            conditionsDate(chatId, dateBonusCodeOfInstagram, currentDate);
         }
     }
 
@@ -279,7 +272,6 @@ public class TelegramBotService extends TelegramLongPollingBot {
 
 
     public void createOneBoard(long chatId, String theFirstBoard, String text) {
-
         ReplyKeyboardMarkup keyboard = new ReplyKeyboardMarkup();
         List<KeyboardRow> keyboardRows = new ArrayList<>();
         KeyboardRow row1 = new KeyboardRow();
@@ -315,6 +307,38 @@ public class TelegramBotService extends TelegramLongPollingBot {
         createNewBoard(chatId, keyboard, keyboardRows, row2);
     }
 
+    public void createThreeBoard(long chatId, String theFirstBoard, String theSecondBoard, String theThirdBoard) {
+        ReplyKeyboardMarkup keyboard = new ReplyKeyboardMarkup();
+        List<KeyboardRow> keyboardRows = new ArrayList<>();
+
+        KeyboardRow row1 = new KeyboardRow();
+        row1.add(theFirstBoard);
+
+        KeyboardRow row2 = new KeyboardRow();
+        row2.add(theSecondBoard);
+
+        KeyboardRow row3 = new KeyboardRow();
+        row3.add(theThirdBoard);
+
+        keyboardRows.add(row1);
+        keyboardRows.add(row2);
+        keyboardRows.add(row3);
+
+        createNewBoard(chatId, keyboard, keyboardRows);
+    }
+
+    private void createNewBoard(long chatId, ReplyKeyboardMarkup keyboard, List<KeyboardRow> keyboardRows) {
+        keyboard.setKeyboard(keyboardRows);
+        SendMessage message = new SendMessage();
+        message.setChatId(String.valueOf(chatId));
+        message.setText("Выберите действие:");
+        message.setReplyMarkup(keyboard);
+        try {
+            execute(message);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void sendMessageWithImageToAllUsers() {
         for (UserEntity user : userService.getAllUsers()) {

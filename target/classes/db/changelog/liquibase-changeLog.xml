@@ -40,12 +40,6 @@
             <column name="code" type="varchar(300)">
             </column>
         </createTable>
-
-
-
-
-
-
         <createTable tableName="images">
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
@@ -59,7 +53,6 @@
             <column name="file_size" type="int">
                 <constraints nullable="false"/>
             </column>
-
         </createTable>
         <createTable tableName="posts">
             <column name="id" type="int" autoIncrement="true">
@@ -76,9 +69,5 @@
                              referencedTableName="images" referencedColumnNames="id"/>
             </column>
         </createTable>
-
-
-
-
     </changeSet>
 </databaseChangeLog>

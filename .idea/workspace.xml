@@ -4,7 +4,45 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6b55bce-3974-4f9f-abec-7b1b003a83c3" name="Changes" comment="" />
+    <list default="true" id="b6b55bce-3974-4f9f-abec-7b1b003a83c3" name="Changes" comment="Change Name Directory">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/16930087-66a8-4b43-9ac6-eeebc38670c0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/16930087-66a8-4b43-9ac6-eeebc38670c0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/battle_bot/TheBattleTelegramApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/battle_bot/TheBattleTelegramApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/battle_bot/models/Value.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/battle_bot/models/Value.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/battle_bot/services/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/battle_bot/services/ImageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/battle_bot/services/TelegramBotService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/battle_bot/services/TelegramBotService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/battle_bot/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/battle_bot/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/weathertelegram/TheBattleTelegramApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/TheBattleTelegramApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/configs/TelegramBotInitializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/exceptions/EntityException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/exceptions/UploadFileException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/models/BinaryContentEntity$BinaryContentEntityBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/models/BinaryContentEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/models/BonusCodeEntity$BonusCodeEntityBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/models/BonusCodeEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/models/ImageEntity$ImageEntityBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/models/ImageEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/models/PostEntity$PostEntityBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/models/PostEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/models/UserEntity$UserEntityBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/models/UserEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/repositories/BinaryContentRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/repositories/BonusCodeRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/repositories/ImageRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/repositories/PostRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/repositories/UserRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/services/ImageService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/services/InstagramService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/services/PostService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/services/TelegramBotService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/services/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/weathertelegram/services/Value.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/changelog/liquibase-changeLog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db/changelog/liquibase-changeLog.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,10 +58,15 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/example/weathertelegram/services/TelegramBotService.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/example/battle_bot/services/TelegramBotService.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
@@ -56,49 +99,57 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path": "C:\\Users\\Maria\\Documents\\Downloads\\weather_telegram_bot",
-    "Downloaded.Files.Path.Enabled": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "last_opened_file_path": "C:/Users/Maria/Documents/Downloads/thebattleclub_bot",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.20258065",
-    "project.structure.side.proportion": "0.5367647",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "spring.configuration.checksum": "7b1312a1b3e74bb174b3fbbf68ab5a92"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path&quot;: &quot;C:\\Users\\Maria\\Documents\\Downloads\\weather_telegram_bot&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Maria/Documents/Downloads/thebattleclub_bot&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.20258065&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.5367647&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;show.run.dashboard.notification&quot;: &quot;false&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;23144f8c6d967c6cd6b0ccd7c4845fb9&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
-  <component name="RunManager" selected="Spring Boot.WeatherTelegramApplication">
-    <configuration name="TheBattleTelegramApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+}</component>
+  <component name="RunManager" selected="Spring Boot.TheBattleTelegram">
+    <configuration name="TheBattleTelegram" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" />
       <module name="thebattleclub_bot" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.weathertelegram.TheBattleTelegramApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.battle_bot.TheBattleTelegramApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WeatherTelegramApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="demo4" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.weathertelegram.TheBattleTelegramApplication" />
+    <configuration name="TheBattleTelegramApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" />
+      <module name="thebattleclub_bot" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.battle_bot.TheBattleTelegramApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.TheBattleTelegram" />
+      <item itemvalue="Spring Boot.TheBattleTelegramApplication" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -112,7 +163,20 @@
       <workItem from="1681456001215" duration="191781000" />
       <workItem from="1683525415625" duration="797000" />
       <workItem from="1683528024096" duration="669000" />
-      <workItem from="1683532281810" duration="361000" />
+      <workItem from="1683532281810" duration="4101000" />
+      <workItem from="1685027784397" duration="217000" />
+      <workItem from="1685028016150" duration="313000" />
+      <workItem from="1685028375204" duration="180000" />
+      <workItem from="1685028572864" duration="4692000" />
+      <workItem from="1685790514462" duration="4236000" />
+      <workItem from="1685987336756" duration="9621000" />
+      <workItem from="1686214068462" duration="1198000" />
+      <workItem from="1694029931380" duration="5908000" />
+      <workItem from="1694459087875" duration="7152000" />
+      <workItem from="1694502068269" duration="2825000" />
+      <workItem from="1694718560090" duration="9775000" />
+      <workItem from="1694894291112" duration="3687000" />
+      <workItem from="1694905445612" duration="388000" />
     </task>
     <task id="LOCAL-00001" summary=",">
       <created>1683532490857</created>
@@ -128,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683532578328</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Change Name Directory">
+      <created>1683532843118</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683532843118</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,14 +207,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="," />
-    <option name="LAST_COMMIT_MESSAGE" value="," />
+    <MESSAGE value="Change Name Directory" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change Name Directory" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/weathertelegram/services/TelegramBotService.java</url>
-          <line>191</line>
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/battle_bot/services/TelegramBotService.java</url>
+          <line>204</line>
           <option name="timeStamp" value="72" />
         </line-breakpoint>
       </breakpoints>

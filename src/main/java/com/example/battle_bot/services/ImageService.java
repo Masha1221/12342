@@ -27,7 +27,6 @@ public class ImageService {
     private final BinaryContentRepository binaryContentRepository;
     private final ImageRepository imageRepository;
 
-
     public ImageEntity savePhoto(Message telegramMessage) throws TelegramApiException, IOException, URISyntaxException {
         var photoSizeCount = telegramMessage.getPhoto().size();
         var photoIndex = photoSizeCount > 1 ? telegramMessage.getPhoto().size() - 1 : 0;

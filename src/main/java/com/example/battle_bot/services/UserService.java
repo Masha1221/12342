@@ -6,8 +6,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.objects.Message;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -36,5 +38,12 @@ public class UserService {
 
     public void save(UserEntity entity) {
         userRepository.save(entity);
+    }
+
+    public List<String> getNamesOfUsers(){
+        return getAllUsers().stream()
+                .map(UserEntity::getName)
+                .collect(Collectors.toList());
+
     }
 }
